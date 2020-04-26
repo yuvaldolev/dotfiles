@@ -1,0 +1,11 @@
+# Prompt.
+$PROMPT = '{env_name}{BOLD_BLUE}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}❯{NO_COLOR} '
+#$PROMPT = '{env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR} '
+
+# Aliases.
+aliases['ll'] = 'ls -alF'
+aliases['la'] ='ls -A'
+aliases['l'] = 'ls -CF';
+
+# PATH.
+$PATH = ['/usr/local/bin', '/usr/local/sbin', '$HOME/.cargo/bin', '$HOME/volt/bin', '$HOME/rtags/bin', '$HOME/bin'] + $PATH
