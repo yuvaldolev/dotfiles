@@ -9,6 +9,7 @@ set background=dark
 " Auto indentation.
 set autoindent
 filetype on
+filetype plugin on
 filetype indent on
 filetype plugin indent on
 
@@ -24,6 +25,10 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd BufWritePre * if &ft =~ 'sh\|c\|cpp\|python\|rust' | :call <SID>StripTrailingWhitespaces() | endif
+
+" Backup.
+set nobackup
+set noswapfile
 
 " Splits
 set splitbelow
@@ -42,8 +47,8 @@ set belloff=all
 set timeoutlen=0
 
 " Hopefully these settings will render vim faster...
-set nocursorline
-set lazyredraw
+" set nocursorline
+" set lazyredraw
 
 " Spell checking
 set spell
