@@ -77,12 +77,12 @@ set wildmenu
 set wildmode=full
 
 " Powerline.
-py3 from powerline.vim import setup as powerline_setup
-py3 powerline_setup()
-py3 del powerline_setup
-set laststatus=2
-"set showtabline=2
-set noshowmode
+"python3 from powerline.vim import setup as powerline_setup
+"python3 powerline_setup()
+"python3 del powerline_setup
+"set laststatus=2
+""set showtabline=2
+"set noshowmode
 
 " ------------------------------------------
 "                  Plugins    
@@ -105,6 +105,12 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" vim-airline.
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
 
 " Ack (using The Silver Searcher).
 Plug 'mileszs/ack.vim'
@@ -134,6 +140,10 @@ Plug 'mattn/webapi-vim'
 " Autotag.
 Plug 'craigemery/vim-autotag'
 
+" commentary.vim.
+Plug 'tpope/vim-commentary'
+
 " End plugin setup
 call plug#end()
 
+" Neovim configuration.
