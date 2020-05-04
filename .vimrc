@@ -155,7 +155,6 @@ Plug 'junegunn/vim-peekaboo'
 
 " Yank highlighting!
 Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration=100
 
 " End plugin setup
 call plug#end()
