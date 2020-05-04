@@ -76,9 +76,11 @@ cnoreabbrev H vert h
 set wildmenu
 set wildmode=full
 
-" Vertical tag definitions.
-nnoremap <C-w>[ :vert winc ]<CR>
-nnoremap <C-w><C-[> :vert winc ]<CR>
+" Jump to tag key mappings.
+nnoremap <C-w>] :vert winc ]<CR>
+nnoremap <C-w><C-]> :vert winc ]<CR>
+nnoremap <C-w>[ :winc ]<CR>
+nnoremap <C-w><C-[> :winc ]<CR>
 
 " Powerline.
 "python3 from powerline.vim import setup as powerline_setup
