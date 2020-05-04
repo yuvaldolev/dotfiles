@@ -8,10 +8,12 @@ aliases['la'] ='ls -A'
 aliases['l'] = 'ls -CF';
 
 # PATH.
-$PATH.append('/usr/local/bin')
-$PATH.append('/usr/local/sbin')
-$PATH.append('$HOME/.cargo/bin')
-$PATH.append('$HOME/rtags/bin')
-$PATH.append('$HOME/bin')
-$PATH.append('/usr/local/opt/llvm/bin')
+PATH = []
+PATH.append('/usr/local/bin')
+PATH.append('/usr/local/sbin')
+PATH.append('$HOME/.cargo/bin')
+PATH.append('$HOME/rtags/bin')
+PATH.append('$HOME/bin')
+PATH.append('/usr/local/opt/llvm/bin')
+$PATH = PATH + $PATH
 

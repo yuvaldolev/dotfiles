@@ -97,15 +97,6 @@ endif
 " Begin plugin setup.
 call plug#begin('~/.vim/plugged')
 
-" Easy Align.
-Plug 'junegunn/vim-easy-align'
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " vim-airline.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -140,20 +131,31 @@ Plug 'mattn/webapi-vim'
 " Autotag.
 Plug 'craigemery/vim-autotag'
 
+" Easy Align.
+Plug 'junegunn/vim-easy-align'
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " commentary.vim.
 Plug 'tpope/vim-commentary'
 
 " Ultisnips.
-" Track the engine.
 Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine.
 Plug 'honza/vim-snippets'
-
-" Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Peekaboo!
+Plug 'junegunn/vim-peekaboo'
+
+" Yank highlighting!
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration=100
 
 " End plugin setup
 call plug#end()
@@ -161,3 +163,4 @@ call plug#end()
 " ------------------------------------------
 "       Neovim Specific Configuration    
 " ------------------------------------------
+
