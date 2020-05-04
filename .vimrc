@@ -143,6 +143,18 @@ Plug 'craigemery/vim-autotag'
 " commentary.vim.
 Plug 'tpope/vim-commentary'
 
+" Ultisnips.
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine.
+Plug 'honza/vim-snippets'
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 " End plugin setup
 call plug#end()
 
