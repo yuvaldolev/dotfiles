@@ -146,4 +146,6 @@ Plug 'tpope/vim-commentary'
 " End plugin setup
 call plug#end()
 
-" Neovim configuration.
+" ------------------------------------------
+"       Neovim Specific Configuration    
+" ------------------------------------------
