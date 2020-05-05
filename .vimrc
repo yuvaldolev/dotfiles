@@ -108,6 +108,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='gruvbox'
+let g:airline_section_warning=''
 
 " Ack (using The Silver Searcher).
 Plug 'mileszs/ack.vim'
