@@ -52,10 +52,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" GUI options.
-set guioptions=
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h15
-set belloff=all
+" Clear search highlights on escape press.
+nnoremap <esc> :noh<return><esc>
 
 " No timeout PLEASE!
 set notimeout
@@ -89,6 +87,11 @@ nnoremap <C-w><C-[> :winc ]<CR>
 "set laststatus=2
 ""set showtabline=2
 "set noshowmode
+
+" GUI options.
+set guioptions=
+set guifont=Droid\ Sans\ Mono\ for\ Powerline:h15
+set belloff=all
 
 " ------------------------------------------
 "                  Plugins    
