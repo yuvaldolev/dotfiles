@@ -106,6 +106,9 @@ endif
 " Begin plugin setup.
 call plug#begin('~/.vim/plugged')
 
+" Language packs.
+Plug 'sheerun/vim-polyglot'
+
 " vim-airline.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
