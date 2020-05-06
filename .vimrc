@@ -36,7 +36,7 @@ endfun
 
 autocmd BufWritePre * if &ft =~ 'sh\|c\|cpp\|python' | :call <SID>StripTrailingWhitespaces() | endif
 
-" Backup.
+" No backup plz.
 set nobackup
 set noswapfile
 
