@@ -17,3 +17,4 @@ PATH.append('$HOME/bin')
 PATH.append('/usr/local/opt/llvm/bin')
 $PATH = PATH + $PATH
 
+$TERM='screen-256color'
