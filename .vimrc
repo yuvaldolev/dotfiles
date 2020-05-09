@@ -17,7 +17,7 @@ endif
 set t_Co=256
 
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+colorscheme yd
 
 " Cursor.
 let &t_SI.="\e[5 q" "SI = INSERT mode
@@ -167,12 +167,6 @@ Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" Peekaboo!
-Plug 'junegunn/vim-peekaboo'
-
-" Yank highlighting!
-Plug 'machakann/vim-highlightedyank'
 
 " End plugin setup
 call plug#end()
