@@ -170,7 +170,7 @@ let s:yd_constant = ['#8f8e40', 255]
 let s:yd_preproc = ['#C1B3A2', 255]
 let s:yd_comment = ['#7D7D7D', 255]
 let s:yd_type = ['#BA9341', 255]
-let s:yd_function = ['#a85747', 255]
+let s:yd_function = ['#a85b4f', 255]
 let s:yd_macro = ['#4F8C7C', 255]
 
 " determine relative colors
