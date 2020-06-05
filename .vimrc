@@ -47,6 +47,10 @@ endfun
 
 autocmd BufWritePre * if &ft =~ 'sh\|c\|cpp\|python' | :call <SID>StripTrailingWhitespaces() | endif
 
+" Please make vim render faster PLEASE!
+set ttyfast
+set lazyredraw
+
 " No backup plz.
 set nobackup
 set noswapfile

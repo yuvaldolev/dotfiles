@@ -14,7 +14,13 @@ PATH.append('/usr/local/sbin')
 PATH.append('$HOME/.cargo/bin')
 PATH.append('$HOME/rtags/bin')
 PATH.append('$HOME/bin')
+PATH.append('$HOME/.local/bin')
 PATH.append('/usr/local/opt/llvm/bin')
 $PATH = PATH + $PATH
 
+# Terminal colors.
 $TERM='screen-256color'
+
+# Use Neovim as the default man pager.
+$MANPAGER = "col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
+
