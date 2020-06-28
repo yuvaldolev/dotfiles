@@ -1,0 +1,22 @@
+[user]
+	name = Yuval Dolev
+	email = yuvaldolev2@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	a = add -A
+	br = branch
+	bd = branch -d
+	cm = commit -m
+	cma = commit -am
+	co = checkout
+	cb = checkout -b
+    lg = log --all --decorate --oneline --graph
+	ps = push
+	pso = push origin
+	st = status
+[core]
+	excludesfile = /Users/yuvaldolev/.global_ignore
