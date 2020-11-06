@@ -8,16 +8,7 @@ let $SHELL='/bin/bash'
 
 " Syntax highlighting & colors.
 syntax on
-set background=dark
-if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-set t_Co=256
-
-let g:gruvbox_contrast_dark='hard'
-colorscheme yd
+colorscheme gruvbox
 
 " Cursor.
 let &t_SI.="\e[5 q" "SI = INSERT mode
@@ -38,14 +29,21 @@ set shiftwidth=4
 set showcmd
 
 " Strip whitespaces on save.
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
+function TrimWhiteSpace()
+	let l = line(".")
+	let c = col(".")
+	%s/\s*$//
+	''
+	call cursor(l, c)
+endfunction
 
-autocmd BufWritePre * if &ft =~ 'sh\|c\|cpp\|python' | :call <SID>StripTrailingWhitespaces() | endif
+autocmd FileWritePre * call TrimWhiteSpace()
+autocmd FileAppendPre * call TrimWhiteSpace()
+autocmd FilterWritePre * call TrimWhiteSpace()
+autocmd BufWritePre * call TrimWhiteSpace()
+
+map <F2> :call TrimWhiteSpace()<CR>
+map! <F2> :call TrimWhiteSpace()<CR>
 
 " Please make vim render faster PLEASE!
 set ttyfast
@@ -92,21 +90,13 @@ nnoremap <C-w><C-]> :vert winc ]<CR>
 nnoremap <C-w>[ :winc ]<CR>
 nnoremap <C-w><C-[> :winc ]<CR>
 
-" Powerline.
-"python3 from powerline.vim import setup as powerline_setup
-"python3 powerline_setup()
-"python3 del powerline_setup
-"set laststatus=2
-""set showtabline=2
-"set noshowmode
-
 " GUI options.
 set guioptions=
 set guifont=Droid\ Sans\ Mono\ for\ Powerline:h15
 set belloff=all
 
 " ------------------------------------------
-"                  Plugins    
+"                  Plugins
 " ------------------------------------------
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -128,15 +118,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='gruvbox'
 let g:airline_section_warning=''
 
-" Ack (using The Silver Searcher).
-Plug 'mileszs/ack.vim'
-if executable('ag')
-	let g:ackprg = 'ag --vimgrep'
-endif
-
 " fzf.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-set rtp+=/usr/local/opt/fzf
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>s :Rg<cr>
 
 " Tagbar.
 Plug 'majutsushi/tagbar'
@@ -149,9 +135,6 @@ nnoremap <F3> :UndotreeToggle<cr>
 " Rust.
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
-
-" Web API.
-Plug 'mattn/webapi-vim'
 
 " Autotag.
 Plug 'craigemery/vim-autotag'
@@ -175,14 +158,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" zig.vim
+Plug 'ziglang/zig.vim'
+
 " End plugin setup
 call plug#end()
 
-" ------------------------------------------
-"       Neovim Specific Configuration    
-" ------------------------------------------
-if has('nvim')
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-endif
- 
