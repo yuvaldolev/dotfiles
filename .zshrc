@@ -1,8 +1,13 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/yuval/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -106,15 +111,58 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+# Path.
+export PATH=$HOME/apps/4coder:$PATH
+export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+
+# Aliases.
+# alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"
+alias 4ed="$HOME/apps/4coder/4ed -F &>/dev/null &"
+alias nvide="neovide --multigrid &>/dev/null"
+
+# Manpager.
+# export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # Launch TMUX on startup.
 if [ -z "$TMUX" ]
 then
-    tmux attach -t TMUX || tmux new -s TMUX
+   tmux attach -t TMUX || tmux new -s TMUX
 fi
 
 # FZF configuration.
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.git/*"'
 
-# Aliases.
-alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"
+# Go configuration.
+export GOPATH="$HOME/go"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Kubernetes develop environment configuration.
+# if type brew &>/dev/null; then
+#   HOMEBREW_PREFIX=$(brew --prefix)
+#   # gnubin; gnuman
+#   for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
+#   # I actually like that man grep gives the BSD grep man page
+#   for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman; do export MANPATH=$d:$MANPATH; done
+# fi
+
+export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc'; fi
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+# Bat.
+export BAT_THEME="gruvbox-dark"

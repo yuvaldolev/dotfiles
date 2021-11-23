@@ -29,21 +29,21 @@ set shiftwidth=4
 set showcmd
 
 " Strip whitespaces on save.
-function TrimWhiteSpace()
-	let l = line(".")
-	let c = col(".")
-	%s/\s*$//
-	''
-	call cursor(l, c)
-endfunction
+" function TrimWhiteSpace()
+" 	let l = line(".")
+" 	let c = col(".")
+" 	%s/\s*$//
+" 	''
+" 	call cursor(l, c)
+" endfunction
 
-autocmd FileWritePre * call TrimWhiteSpace()
-autocmd FileAppendPre * call TrimWhiteSpace()
-autocmd FilterWritePre * call TrimWhiteSpace()
-autocmd BufWritePre * call TrimWhiteSpace()
+" autocmd FileWritePre * call TrimWhiteSpace()
+" autocmd FileAppendPre * call TrimWhiteSpace()
+" autocmd FilterWritePre * call TrimWhiteSpace()
+" autocmd BufWritePre * call TrimWhiteSpace()
 
-map <F2> :call TrimWhiteSpace()<CR>
-map! <F2> :call TrimWhiteSpace()<CR>
+" map <F2> :call TrimWhiteSpace()<CR>
+" map! <F2> :call TrimWhiteSpace()<CR>
 
 " Please make vim render faster PLEASE!
 set ttyfast
@@ -121,8 +121,21 @@ let g:airline_section_warning=''
 " fzf.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang Rge call RipgrepFzf(<q-args>, <bang>0)
+
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>s :Rg<cr>
+nnoremap <leader>e :Rge<cr>
+nnoremap <leader>j :Tags<cr>
 
 " Tagbar.
 Plug 'majutsushi/tagbar'
@@ -161,6 +174,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " zig.vim
 Plug 'ziglang/zig.vim'
 
+" swift.vim
+Plug 'keith/swift.vim'
+
+" Flutter support.
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+
 " End plugin setup
 call plug#end()
 
+" neovide.
+let g:neovide_fullscreen=v:true
+
+" Move blocks up and down.
+nnoremap <S-j> :m .+1<CR>==
+nnoremap <S-k> :m .-2<CR>==
+vnoremap <S-k> :m '<-2<CR>gv=gv
+vnoremap <S-j> :m '>+1<CR>gv=gv

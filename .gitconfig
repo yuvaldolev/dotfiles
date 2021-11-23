@@ -1,23 +1,48 @@
 [user]
 	name = Yuval Dolev
 	email = yuvaldolev2@gmail.com
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	a = add -A
 	br = branch
 	bd = branch -d
 	cm = commit -m
 	cma = commit -am
+	cl = clone --recursive
 	co = checkout
 	cb = checkout -b
     lg = log --all --decorate --oneline --graph
 	ps = push
 	pso = push origin
+	smu = submodule update --init --recursive
 	st = status
+
 [core]
 	excludesfile = /Users/yuvaldolev/.global_ignore
+	editor = nvim
 
+[pull]
+	rebase = false
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+	plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = gruvbox-dark
+	line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
+[init]
+	defaultBranch = main
