@@ -167,9 +167,9 @@ Plug 'tpope/vim-commentary'
 " Ultisnips.
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " zig.vim
 Plug 'ziglang/zig.vim'
@@ -182,30 +182,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
 " copilot.vim
-" Plug 'github/copilot.vim'
-
-" asyncomplete.vim
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'keremc/asyncomplete-racer.vim'
-
-" Rust Racer completion.
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-    \ asyncomplete#sources#racer#get_source_options())
-
-" asyncomplete configuration.
-let g:asyncomplete_auto_popup = 0
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <C-n>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<C-n>" :
-  \ asyncomplete#force_refresh()
-inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-h>"
+Plug 'github/copilot.vim'
 
 " End plugin setup
 call plug#end()
