@@ -106,12 +106,14 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+# Pyenv
+eval "$(pyenv init -)"
+
 # Path.
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$PATH:/usr/local/bin
 
 # Aliases.
 # alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"
@@ -155,4 +157,3 @@ export BAT_THEME="gruvbox-dark"
 # fi
 
 # export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
-
