@@ -106,14 +106,14 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
-# Pyenv
-eval "$(pyenv init -)"
-
 # Path.
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:/usr/local/bin
+
+# Pyenv
+eval "$(pyenv init -)"
 
 # Aliases.
 # alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"

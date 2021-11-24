@@ -181,11 +181,11 @@ Plug 'keith/swift.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
+" copilot.vim.
+Plug 'github/copilot.vim'
+
 " End plugin setup
 call plug#end()
-
-" neovide.
-let g:neovide_fullscreen=v:true
 
 " Move blocks up and down.
 nnoremap <S-j> :m .+1<CR>==
