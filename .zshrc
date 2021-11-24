@@ -1,8 +1,3 @@
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -135,12 +130,20 @@ fi
 
 # FZF configuration.
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.git/*"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Go configuration.
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Bat.
+export BAT_THEME="gruvbox-dark"
 
 # Kubernetes develop environment configuration.
 # if type brew &>/dev/null; then
@@ -151,18 +154,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #   for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman; do export MANPATH=$d:$MANPATH; done
 # fi
 
-export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
+# export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuvaldolev/apps/google-cloud-sdk/completion.zsh.inc'; fi
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
-
-# Bat.
-export BAT_THEME="gruvbox-dark"
