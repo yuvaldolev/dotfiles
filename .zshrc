@@ -106,14 +106,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
-# Path.
+# PATH.
+export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
 export PATH=$HOME/bin:$PATH
-export PATH=$PATH:/usr/local/bin
-
-# Pyenv
-eval "$(pyenv init -)"
 
 # Aliases.
 # alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"
@@ -129,6 +126,16 @@ if [ -z "$TMUX" ]
 then
    tmux attach -t TMUX || tmux new -s TMUX
 fi
+
+# Pyenv
+eval "$(pyenv init -)"
+# Setting PATH for Python 3.10
+# The original version is saved in .zprofile.pysave
+export PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+eval "$(pyenv init --path)"
+
+# Rust.
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
 # FZF configuration.
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.git/*"'
