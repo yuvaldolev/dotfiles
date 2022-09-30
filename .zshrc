@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,6 +107,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 # PATH.
+export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
@@ -115,7 +116,7 @@ export PATH=$HOME/bin:$PATH
 # Aliases.
 # alias cloc="cloc --read-lang-def=$HOME/cloc_lang_defs.txt"
 alias 4ed="$HOME/apps/4coder/4ed -F &>/dev/null &"
-alias nvide="neovide --multigrid &>/dev/null"
+alias neovide="/Applications/Neovide.app/Contents/MacOS/neovide --multigrid &>/dev/null"
 
 # Manpager.
 # export MANPAGER="nvim -c 'set ft=man' -"
@@ -164,3 +165,4 @@ export BAT_THEME="gruvbox-dark"
 # fi
 
 # export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
+#

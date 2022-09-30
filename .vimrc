@@ -16,14 +16,14 @@ let &t_SR.="\e[4 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 " Auto indentation.
-set autoindent
-filetype on
 filetype plugin on
 filetype indent on
-filetype plugin indent on
 
 set tabstop=4
 set shiftwidth=4
+set expandtab
+set smarttab
+set smartindent
 
 " Show commands.
 set showcmd
@@ -70,9 +70,6 @@ set notimeout
 set ttimeout
 set ttimeoutlen=0
 
-" Spell checking
-set spell
-
 " Man pages.
 runtime ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
@@ -108,7 +105,8 @@ endif
 " Begin plugin setup.
 call plug#begin('~/.vim/plugged')
 
-" Language packs.
+" " Language packs.
+let g:polyglot_disabled = ["autoindent"]
 Plug 'sheerun/vim-polyglot'
 
 " vim-airline.
@@ -151,6 +149,7 @@ let g:rustfmt_autosave = 1
 
 " Autotag.
 Plug 'craigemery/vim-autotag'
+let g:autotagStartMethod='fork'
 
 " Easy Align.
 Plug 'junegunn/vim-easy-align'
@@ -186,6 +185,7 @@ Plug 'github/copilot.vim'
 
 " nvim-treesitter.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " End plugin setup
 call plug#end()
@@ -218,8 +218,78 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm",
     },
   },
-  indent = {
-    enable = true,
+}
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
   },
 }
 EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+  },
+}
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+  },
+}
+EOF
+
+" ------------------------------------------
+"                  Neovide
+" ------------------------------------------
+" Paste in command mode.
+cnoremap <c-v> <c-r>+
+
+" Hide mouse while typing.
+let g:neovide_hide_mouse_when_typing=1
