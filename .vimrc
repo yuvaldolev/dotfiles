@@ -23,8 +23,9 @@ let &t_SR.="\e[4 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 " Auto indentation.
-filetype plugin on
 filetype indent on
+filetype plugin on
+filetype plugin indent on
 
 set tabstop=4
 set shiftwidth=4
