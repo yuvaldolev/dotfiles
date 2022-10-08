@@ -188,9 +188,6 @@ Plug 'keith/swift.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
-" copilot.vim
-Plug 'github/copilot.vim'
-
 " nvim-treesitter.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -211,7 +208,7 @@ vnoremap <S-j> :m '>+1<CR>gv=gv
 " nvim-treesitter configuration.
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   sync_install = false,
   highlight = {
     enable = true,

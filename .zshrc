@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
-plugins=(git kubectl bazel)
+plugins=(bazel git kubectl zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,7 +45,7 @@ export BAT_THEME="gruvbox-dark"
 
 # Launch TMUX on startup.
 # IMPORTANT: This should be kept last in the .zshrc file.
-if [ -z "$TMUX" ]
-then
-   tmux attach -t TMUX || tmux new -s TMUX
+if [ -z "$TMUX" ]; then
+    export SHELL=$(which zsh)
+    tmux attach -t TMUX || tmux new -s TMUX
 fi
