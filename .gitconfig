@@ -25,7 +25,6 @@
 	st = status
 
 [core]
-	excludesfile = /Users/yuvaldolev/.global_ignore
 	editor = nvim
 
 [pull]

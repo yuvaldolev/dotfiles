@@ -1,3 +1,0 @@
-# Should be used with 'git config --global core.excludesfile $HOME/.global_ignore'
-tags
-

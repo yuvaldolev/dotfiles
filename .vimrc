@@ -2,6 +2,13 @@
 "             Vim Configuration
 "                By: ydolev
 " ------------------------------------------
+
+" Do not apply the rest of the vimrc if Neovim is running
+" inside the VSCode Neovim extension.
+if exists('g:vscode')
+    finish
+endif
+
 " Use bash as the VIM shell.
 set shell=/bin/bash
 let $SHELL='/bin/bash'
