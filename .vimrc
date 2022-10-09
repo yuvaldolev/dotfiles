@@ -309,3 +309,21 @@ cnoremap <c-v> <c-r>+
 
 " Hide mouse while typing.
 let g:neovide_hide_mouse_when_typing=1
+
+" ------------------------------------------
+"                  Formatting
+" ------------------------------------------
+autocmd Filetype c setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+function! Formatonsave()
+  let l:formatdiff = 1
+
+  if "Linux" == g:os
+    py3f /usr/local/share/clang/clang-format.py
+  elseif "Darwin" == g:os
+    py3f /usr/local/Cellar/clang-format/14.0.6/share/clang/clang-format.py
+  endif
+endfunction
+
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
