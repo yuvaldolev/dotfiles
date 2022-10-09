@@ -7,7 +7,7 @@ plugins=(bazel git kubectl zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # No user@machine in the prompt.
-export DEFAULT_USER="$(whoami)"
+prompt_context() {}
 
 # UTF-8 support.
 export LC_ALL=en_US.UTF-8
