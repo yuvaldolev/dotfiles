@@ -15,6 +15,8 @@ let $SHELL='/bin/bash'
 
 " Syntax highlighting & colors.
 syntax on
+
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
 " Cursor.
