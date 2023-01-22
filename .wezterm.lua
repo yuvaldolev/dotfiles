@@ -13,4 +13,12 @@ return {
         top = 0,
         bottom = 0,
     },
+    keys = {
+        {
+            -- Turn off the default CMD-t action.
+            key = 't',
+            mods = 'CMD',
+            action = wezterm.action.DisableDefaultAssignment,
+        },
+    },
 }

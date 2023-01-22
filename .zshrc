@@ -14,6 +14,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+# Aliases.
+alias cat=bat
+
 # PATH.
 export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 export PATH=/usr/local/bin:$PATH

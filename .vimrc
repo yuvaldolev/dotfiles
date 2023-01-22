@@ -19,6 +19,9 @@ syntax on
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
+" Set utf8 as standard encoding and en_US as the standard language.
+set encoding=utf8
+
 " Cursor.
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode
@@ -27,37 +30,25 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 " Auto indentation.
 filetype indent on
 filetype plugin on
-filetype plugin indent on
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
 set smartindent
+set autoindent
+set wrap
+
+" Linebreak on 500 characters.
+set lbr
+set tw=500
+
+" Set to auto read when a file is changed from the outside.
+set autoread
+au FocusGained,BufEnter * checktime
 
 " Show commands.
 set showcmd
-
-" Strip whitespaces on save.
-" function TrimWhiteSpace()
-" 	let l = line(".")
-" 	let c = col(".")
-" 	%s/\s*$//
-" 	''
-" 	call cursor(l, c)
-" endfunction
-
-" autocmd FileWritePre * call TrimWhiteSpace()
-" autocmd FileAppendPre * call TrimWhiteSpace()
-" autocmd FilterWritePre * call TrimWhiteSpace()
-" autocmd BufWritePre * call TrimWhiteSpace()
-
-" map <F2> :call TrimWhiteSpace()<CR>
-" map! <F2> :call TrimWhiteSpace()<CR>
-
-" Please make vim render faster PLEASE!
-set ttyfast
-set lazyredraw
 
 " No backup plz.
 set nobackup
@@ -91,16 +82,14 @@ cnoreabbrev H vert h
 set wildmenu
 set wildmode=full
 
+" Spellchecking.
+set spell
+
 " Jump to tag key mappings.
 nnoremap <C-w>] :vert winc ]<CR>
 nnoremap <C-w><C-]> :vert winc ]<CR>
 nnoremap <C-w>[ :winc ]<CR>
 nnoremap <C-w><C-[> :winc ]<CR>
-
-" GUI options.
-set guioptions=
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h15
-set belloff=all
 
 " ------------------------------------------
 "              Operating Systems
@@ -125,10 +114,6 @@ endif
 
 " Begin plugin setup.
 call plug#begin('~/.vim/plugged')
-
-" " Language packs.
-let g:polyglot_disabled = ["autoindent"]
-Plug 'sheerun/vim-polyglot'
 
 " vim-airline.
 Plug 'vim-airline/vim-airline'
@@ -191,10 +176,10 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" zig.vim
+" zig.vim.
 Plug 'ziglang/zig.vim'
 
-" swift.vim
+" swift.vim.
 Plug 'keith/swift.vim'
 
 " Flutter support.
@@ -205,6 +190,15 @@ Plug 'thosakwe/vim-flutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
+" jai.vim.
+Plug 'jansedivy/jai.vim'
+
+" indent-blankline.vim.
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+" nvim_context_vt.
+Plug 'haringsrob/nvim_context_vt'
+
 " End plugin setup
 call plug#end()
 
@@ -214,10 +208,6 @@ nnoremap <S-k> :m .-2<CR>==
 vnoremap <S-k> :m '<-2<CR>gv=gv
 vnoremap <S-j> :m '>+1<CR>gv=gv
 
-" Rust ctags.
-" autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-" autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
 " nvim-treesitter configuration.
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -225,7 +215,6 @@ require'nvim-treesitter.configs'.setup {
   sync_install = false,
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     enable = true,
@@ -301,6 +290,12 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+EOF
+
+lua <<EOF
+require('nvim_context_vt').setup({
+  prefix = '',
+})
 EOF
 
 " ------------------------------------------
