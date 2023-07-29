@@ -196,8 +196,40 @@ Plug 'jansedivy/jai.vim'
 " indent-blankline.vim.
 Plug 'lukas-reineke/indent-blankline.nvim'
 
-" nvim_context_vt.
-Plug 'haringsrob/nvim_context_vt'
+" a.vim.
+" Plug 'vim-scripts/a.vim'
+
+" function! OpenCorrespondingFileInOtherSplit()
+"   let window_count = tabpagewinnr(tabpagenr(), '$')
+"   if 1 == window_count
+"     " Only one window, just open the corresponding file in a new split.
+"     AV
+"   elseif 2 == window_count
+"     " Two windows.
+
+"     " Swap the windows if we're in the right window.
+"     let right_window = 2 == winnr()
+"     if right_window
+"       wincmd r
+"     endif
+
+"     " Close the other window, and open the corresponding file in a new split.
+"     only
+"     AV
+
+"     " Swap the windows if we're in the right window.
+"     if right_window
+"       wincmd r
+"       wincmd w
+"       wincmd =
+"     endif
+"   endif
+" endfunction
+
+" command! -nargs=* -bang Aosp call OpenCorrespondingFileInOtherSplit()
+
+" nnoremap <C-c> :A<cr>
+" nnoremap <C-x> :Aosp<cr>
 
 " End plugin setup
 call plug#end()
@@ -292,20 +324,22 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-lua <<EOF
-require('nvim_context_vt').setup({
-  prefix = '',
-})
-EOF
-
 " ------------------------------------------
 "                  Neovide
 " ------------------------------------------
-" Paste in command mode.
-cnoremap <c-v> <c-r>+
+if exists("g:neovide")
+    " Paste in command mode.
+    cnoremap <c-v> <c-r>+
 
-" Hide mouse while typing.
-let g:neovide_hide_mouse_when_typing=1
+    " Hide mouse while typing.
+    let g:neovide_hide_mouse_when_typing=1
+
+    " Run in fullcreen mode.
+    let g:neovide_fullscreen = v:true
+
+    " Font configuration.
+    set guifont=Fira\ Code:h15
+endif
 
 " ------------------------------------------
 "                  Formatting
@@ -319,8 +353,8 @@ function! Formatonsave()
   if "Linux" == g:os
     py3f /usr/local/share/clang/clang-format.py
   elseif "Darwin" == g:os
-    py3f /usr/local/Cellar/clang-format/14.0.6/share/clang/clang-format.py
+    py3f /opt/homebrew/Cellar/clang-format/15.0.7/share/clang/clang-format.py
   endif
 endfunction
 
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+autocmd BufWritePre *.c,*.h,*.cc,*.cpp,*.hpp call Formatonsave()

@@ -2,7 +2,8 @@ local wezterm = require 'wezterm'
 local mux = wezterm.mux
 
 return {
-    color_scheme = "Gruvbox Dark",
+    audible_bell = "Disabled",
+    color_scheme = "GruvboxDarkHard",
     font = wezterm.font 'Fira Code',
     font_size = 15.0,
     hide_tab_bar_if_only_one_tab = true,

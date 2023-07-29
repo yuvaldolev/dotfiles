@@ -16,6 +16,11 @@ export LANGUAGE=en_US.UTF-8
 
 # Aliases.
 alias cat=bat
+alias neovide="/Applications/Neovide.app/Contents/MacOS/neovide --multigrid"
+
+# Android.
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/25.2.9519653"
 
 # PATH.
 export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
@@ -52,3 +57,11 @@ if [ -z "$TMUX" ]; then
     export SHELL=$(which zsh)
     tmux attach -t TMUX || tmux new -s TMUX
 fi
+
+# pnpm
+export PNPM_HOME="/Users/yuvaldolev/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
