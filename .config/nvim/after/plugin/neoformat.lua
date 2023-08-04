@@ -1,4 +1,4 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  command = "undojoin | Neoformat",
+  command = "try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry",
 })
