@@ -20,10 +20,6 @@ vim.opt.history = 500
 
 -- Set to auto read when a file is changed from the outside.
 vim.opt.autoread = true
-vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
-  pattern = "*",
-  command = "checktime",
-})
 
 -- Search-replace preview.
 vim.opt.inccommand = "nosplit"
