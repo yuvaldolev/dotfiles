@@ -22,10 +22,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set({"n", "v", "s", "o"}, "0", "^")
 
 -- Move lines.
-vim.keymap.set("n", "<S-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<S-k>", ":m .-2<CR>==")
-vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<leader>k", ":m '<-2<CR>gv=gv")
 
 -- Copy to system clipboard.
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
