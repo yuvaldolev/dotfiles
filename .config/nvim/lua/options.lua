@@ -114,3 +114,7 @@ vim.opt.laststatus = 2
 -- Enable spell checking.
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+
+-- Always show the sign column so that buffers with LSP diagnostics won't move
+-- the whole text on every insert.
+vim.opt.signcolumn = "yes"

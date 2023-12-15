@@ -1,9 +1,6 @@
 -- Leader key.
 vim.g.mapleader = " "
 
--- Open file explorer.
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-
 -- Center each search result to the middle of the screen.
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")

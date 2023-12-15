@@ -84,15 +84,11 @@ return {
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
-            -- (Optional) Configure lua language server for neovim
             local lua_opts = lsp_zero.nvim_lua_ls()
             require("lspconfig").lua_ls.setup(lua_opts)
           end,
           rust_analyzer = function()
             require("lspconfig").rust_analyzer.setup({
-              on_attach = function(client)
-                require('completion').on_attach(client)
-              end,
               settings = {
                 ["rust-analyzer"] = {
                   cargo = {
@@ -116,7 +112,6 @@ return {
     init = function()
       vim.diagnostic.config({
         virtual_text = true,
-        update_in_insert = false,
       })
     end
   }
