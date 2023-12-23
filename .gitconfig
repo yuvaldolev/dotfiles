@@ -1,6 +1,6 @@
 [user]
 	name = Yuval Dolev
-	email = yuvaldolev2@gmail.com
+	email = mail@ydolev.com
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
