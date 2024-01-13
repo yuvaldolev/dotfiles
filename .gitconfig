@@ -13,6 +13,7 @@
 	br = branch
 	bd = branch -d
 	ca = commit -a
+	can = commit -a --amend --no-edit
 	cm = commit -m
 	cma = commit -am
 	cl = clone --recursive
