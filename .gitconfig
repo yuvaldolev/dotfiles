@@ -21,6 +21,7 @@
 	cb = checkout -b
     lg = log --all --decorate --oneline --graph
 	ps = push
+    psf = push -f
 	pso = push origin
 	smu = submodule update --init --recursive
 	st = status
