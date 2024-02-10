@@ -39,6 +39,13 @@ return {
         end,
         desc = "Find help tags",
       },
+      {
+        "<leader>fs",
+        function()
+          require("telescope.builtin").lsp_workspace_symbols()
+        end,
+        desc = "Find workspace symbols",
+      },
     },
     version = false, -- Telescope did only one release, so use HEAD for now.
   },

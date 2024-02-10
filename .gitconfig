@@ -1,6 +1,5 @@
-[user]
-	name = Yuval Dolev
-	email = mail@ydolev.com
+[include]
+        path = ~/.gitconfig.local
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
