@@ -11,7 +11,7 @@
 	a = add -A
 	br = branch
 	bd = branch -d
-	ca = commit -a
+	ca = commit -a --amend
 	can = commit -a --amend --no-edit
 	cm = commit -m
 	cma = commit -am
@@ -19,9 +19,11 @@
 	co = checkout
 	cb = checkout -b
     lg = log --all --decorate --oneline --graph
-	ps = push
-    psf = push -f
-	pso = push origin
+	p = push
+    pf = push -f
+	po = push origin
+    pl = pull
+    plo = pull origin
 	smu = submodule update --init --recursive
 	st = status
 
