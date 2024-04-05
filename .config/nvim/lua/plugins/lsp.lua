@@ -68,8 +68,18 @@ return {
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set("n", "[d", function()
+          if nil ~= vim.diagnostic.get_prev() then
+            vim.diagnostic.goto_prev()
+            vim.api.nvim_feedkeys("zzzv", "n", true)
+          end
+        end, opts)
+        vim.keymap.set("n", "]d", function()
+          if nil ~= vim.diagnostic.get_next() then
+            vim.diagnostic.goto_next()
+            vim.api.nvim_feedkeys("zzzv", "n", true)
+          end
+        end, opts)
         vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.references() end, opts)
         vim.keymap.set("n", "<leader>ln", function() vim.lsp.buf.rename() end, opts)

@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdate", "TSUpdateSync" },
-    config = function(_, opts) 
+    config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
     event = { "BufNewFile", "BufReadPost" },
@@ -17,7 +17,7 @@ return {
       },
     },
     version = false, -- Last release is way too old and doesn't work on Windows.
-  }, 
+  },
   {
     "nvim-treesitter/playground",
     cmd = "TSPlaygroundToggle",

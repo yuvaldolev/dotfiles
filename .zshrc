@@ -53,7 +53,7 @@ export BAT_THEME="gruvbox-dark"
 
 # Launch TMUX on startup.
 # IMPORTANT: This should be kept last in the .zshrc file.
-if [ -z "$TMUX" ]; then
+if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]; then
     export SHELL=$(which zsh)
     tmux attach -t TMUX || tmux new -s TMUX
 fi
@@ -67,3 +67,4 @@ esac
 # pnpm end
 
 eval "$(atuin init zsh)"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
