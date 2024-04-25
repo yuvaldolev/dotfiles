@@ -56,6 +56,7 @@ return {
     dependencies = {
       {'hrsh7th/cmp-nvim-lsp'},
       {'williamboman/mason-lspconfig.nvim'},
+      { "j-hui/fidget.nvim", opts = {} },
     },
     config = function()
       -- This is where all the LSP shenanigans will live
