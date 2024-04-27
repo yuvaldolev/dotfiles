@@ -1,3 +1,7 @@
+-- Relative line numbers.
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
 -- Tabs, or should I say spaces?!?!
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
