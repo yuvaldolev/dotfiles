@@ -31,3 +31,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Delete to null register.
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+-- Increment.
+vim.keymap.set("n", "<C-i>", "<C-a>")
