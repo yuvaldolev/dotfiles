@@ -85,6 +85,10 @@ return {
         vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.references() end, opts)
         vim.keymap.set("n", "<leader>ln", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+        if vim.lsp.inlay_hint then
+          vim.lsp.inlay_hint.enable()
+        end
       end)
 
       require('mason-lspconfig').setup({
@@ -113,6 +117,13 @@ return {
                   procMacro = {
                     enable = true
                   },
+                  inlayHints = {
+                    enable = true,
+                    showParameterNames = true,
+                  },
+                  diagnostics = {
+                    enable = true,
+                  }
                 },
               },
             })
