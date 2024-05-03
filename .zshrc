@@ -67,4 +67,7 @@ esac
 # pnpm end
 
 eval "$(atuin init zsh)"
+
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+eval "$(gh copilot alias -- zsh)"
