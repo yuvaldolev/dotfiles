@@ -309,4 +309,3 @@ bind-key -r i run-shell "tmux neww tmux-cht"
 # Projects.
 bind-key -r R run-shell "tmux-sessionizer ~/dev/yuvaldolev/rustyc"
 bind-key -r Q run-shell "tmux-sessionizer ~/dev/yuvaldolev/qr"
-bind-key -r S run-shell "tmux-sessionizer ~/dev/yuvaldolev/scripts"
