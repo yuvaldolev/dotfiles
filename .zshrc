@@ -27,7 +27,7 @@ export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Manpager.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -51,12 +51,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Bat.
 export BAT_THEME="gruvbox-dark"
 
-# Launch TMUX on startup.
-# IMPORTANT: This should be kept last in the .zshrc file.
-if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]; then
-    export SHELL=$(which zsh)
-    tmux attach -t TMUX || tmux new -s TMUX
-fi
+# TMUX Sessionizer.
+bindkey -s ^f "tmux-sessionizer\n"
 
 # pnpm
 export PNPM_HOME="/Users/yuvaldolev/Library/pnpm"
