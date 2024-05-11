@@ -306,6 +306,5 @@ set-option -g repeat-time 0
 bind-key -r f run-shell "tmux neww tmux-sessionizer"
 bind-key -r i run-shell "tmux neww tmux-cht"
 
-# Projects.
-bind-key -r R run-shell "tmux-sessionizer ~/dev/yuvaldolev/rustyc"
-bind-key -r Q run-shell "tmux-sessionizer ~/dev/yuvaldolev/qr"
+# Personal configuration (not in source control).
+source -q ~/.tmux.conf.personal
