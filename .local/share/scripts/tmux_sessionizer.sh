@@ -21,13 +21,13 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    # TMUX isn't running.
+    # TMUX isn't running, start it and create the selected session.
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    # No session with the selected name.
+    # No session with the selected name, create it.
     tmux new-session -ds $selected_name -c $selected
 fi
 
