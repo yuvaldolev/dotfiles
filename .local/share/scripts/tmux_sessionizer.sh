@@ -34,8 +34,10 @@ fi
 if [[ -z $TMUX ]]; then
     # TMUX is running but we're not in a session, attach to the selected session.
     tmux attach-session -t $selected_name
-    exit 0
+else
+    # We're in TMUX, but not in the selected session, switch to it.
+    tmux switch-client -t $selected_name
 fi
 
-# We're in TMUX, but not in the selected session, switch to it.
-tmux switch-client -t $selected_name
+# Cleanup numeric sessions.
+tmux list-sessions -F "#{session_name}" | grep -E '^[0-9]+$' | xargs -I {} tmux kill-session -t {}
