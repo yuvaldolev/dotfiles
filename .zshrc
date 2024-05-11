@@ -54,16 +54,11 @@ export BAT_THEME="gruvbox-dark"
 # TMUX Sessionizer.
 bindkey -s ^f "tmux-sessionizer\n"
 
-# pnpm
-export PNPM_HOME="/Users/yuvaldolev/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
+# Atuin.
 eval "$(atuin init zsh)"
 
+# LLVM.
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
+# GitHub Copilot.
 eval "$(gh copilot alias -- zsh)"
