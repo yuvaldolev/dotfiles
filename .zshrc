@@ -17,6 +17,7 @@ export LANGUAGE=en_US.UTF-8
 # Aliases.
 alias cat=bat
 alias neovide="/Applications/Neovide.app/Contents/MacOS/neovide --multigrid"
+alias ts="tmux-sessionizer"
 
 # Android.
 export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -50,9 +51,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Bat.
 export BAT_THEME="gruvbox-dark"
-
-# TMUX Sessionizer.
-bindkey -s ^f "tmux-sessionizer\n"
 
 # Atuin.
 eval "$(atuin init zsh)"
