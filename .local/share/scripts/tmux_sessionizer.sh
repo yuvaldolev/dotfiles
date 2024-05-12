@@ -17,6 +17,8 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+selected="$(realpath $selected)"
+
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
