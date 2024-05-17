@@ -6,6 +6,10 @@ plugins=(bazel git kubectl zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
 # No user@machine in the prompt.
 prompt_context() {}
 
