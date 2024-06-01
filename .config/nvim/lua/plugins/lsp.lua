@@ -64,29 +64,6 @@ return {
           function(server_name)
             require("lspconfig")[server_name].setup({})
           end,
-
-          rust_analyzer = function()
-            require("lspconfig").rust_analyzer.setup({
-              settings = {
-                ["rust-analyzer"] = {
-                  cargo = {
-                    buildScripts = {
-                      enable = true,
-                    },
-                  },
-                  checkOnSave = {
-                    command = "clippy",
-                  },
-                  procMacro = {
-                    enable = true
-                  },
-                  diagnostics = {
-                    enable = true,
-                  }
-                },
-              },
-            })
-          end,
         },
       })
     end,
