@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-local mux = wezterm.mux
+local action = wezterm.action
 
 local colors = require('lua/rose-pine').colors()
 local window_frame = require('lua/rose-pine').window_frame()
@@ -34,6 +34,34 @@ return {
       key = 't',
       mods = 'CMD',
       action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+      key = 'LeftArrow',
+      mods = 'OPT',
+      action = action.SendKey { key = 'b', mods = 'ALT' },
+    },
+    {
+      key = 'RightArrow',
+      mods = 'OPT',
+      action = action.SendKey { key = 'f', mods = 'ALT' },
+    },
+    {
+      key = 'LeftArrow',
+      mods = 'CMD',
+      action = action.Multiple {
+        wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
+        wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
+      },
+    },
+    {
+      key = 'RightArrow',
+      mods = 'CMD',
+      action = action.SendKey { key = 'e', mods = 'CTRL' },
+    },
+    {
+      key = "Backspace",
+      mods = "CMD",
+      action = action.SendKey { mods = "CTRL", key = "u" },
     },
   },
 }
