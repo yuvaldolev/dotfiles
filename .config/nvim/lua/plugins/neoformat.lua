@@ -7,6 +7,8 @@ return {
         pattern = "*",
         command = "try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry",
       })
+
+      vim.g.neoformat_try_node_exe = 1
     end
   },
 }

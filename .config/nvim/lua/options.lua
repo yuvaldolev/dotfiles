@@ -11,7 +11,7 @@ vim.opt.smarttab = true
 vim.opt.textwidth = 80
 
 vim.api.nvim_create_autocmd("Filetype", {
-  pattern = {"c", "cpp", "lua"},
+  pattern = {"c", "cpp", "javascript", "lua", "typescript"},
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
