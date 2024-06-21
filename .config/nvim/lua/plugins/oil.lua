@@ -2,6 +2,7 @@ return {
   {
     'stevearc/oil.nvim',
     lazy = false,
+    version = "v2.9.0",
     opts = {
       keymaps = {
         ["g?"] = "actions.show_help",

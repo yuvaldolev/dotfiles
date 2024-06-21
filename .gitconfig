@@ -44,10 +44,19 @@
     minus-style = "syntax #340001"
     syntax-theme = gruvbox-dark
 	line-numbers = true
+    navigate = true
 
 [interactive]
     diffFilter = delta --color-only
+
 [init]
 	defaultBranch = main
+
 [color]
 	ui = auto
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
