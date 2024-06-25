@@ -5,6 +5,7 @@ return {
     event = {"BufReadPre", "BufNewFile"},
     cmd = "Mason",
     dependencies = {
+      "folke/neoconf.nvim",
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
@@ -14,6 +15,9 @@ return {
       "j-hui/fidget.nvim",
     },
     config = function()
+      local neoconf = require("neoconf")
+      neoconf.setup({})
+
       local lsp_zero = require("lsp-zero")
       lsp_zero.on_attach(function(_, bufnr)
         local opts = {buffer = bufnr, remap = false}
