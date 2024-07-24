@@ -33,6 +33,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/opt/homebrew/opt/llvm/bin/llvm-objdump:$PATH
 
 # Manpager.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
