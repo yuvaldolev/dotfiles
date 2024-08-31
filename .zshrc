@@ -34,6 +34,7 @@ export PATH=$HOME/apps/4coder:$PATH
 export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin/llvm-objdump:$PATH
+export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
 
 # Manpager.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -70,3 +71,6 @@ eval "$(gh copilot alias -- zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Java.
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
