@@ -1,7 +1,7 @@
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
+    branch = "v4.x",
     event = {"BufReadPre", "BufNewFile"},
     cmd = "Mason",
     dependencies = {
@@ -19,7 +19,8 @@ return {
       neoconf.setup({})
 
       local lsp_zero = require("lsp-zero")
-      lsp_zero.on_attach(function(_, bufnr)
+
+      local lsp_attach = function(_, bufnr)
         local opts = {buffer = bufnr, remap = false}
 
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -46,7 +47,14 @@ return {
         vim.diagnostic.config({
           virtual_text = true,
         })
-      end)
+      end
+
+      lsp_zero.extend_lspconfig({
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        lsp_attach = lsp_attach,
+        float_border = "rounded",
+        sign_text = true,
+      })
 
       local cmp = require("cmp")
       cmp.setup({
@@ -63,7 +71,7 @@ return {
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
-        ensure_installed = {"lua_ls", "tsserver", "rust_analyzer"},
+        ensure_installed = {"lua_ls", "ts_ls", "rust_analyzer"},
         handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup({})
