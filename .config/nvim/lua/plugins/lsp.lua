@@ -87,11 +87,10 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
+          ["<C-n>"] = cmp_action.luasnip_supertab(),
+          ["<C-S-n>"] = cmp_action.luasnip_shift_supertab(),
           ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-          ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
           ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp_action.luasnip_supertab(),
-          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
