@@ -9,10 +9,12 @@ return {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-buffer",
       "L3MON4D3/LuaSnip",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "j-hui/fidget.nvim",
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local neoconf = require("neoconf")
@@ -56,13 +58,6 @@ return {
         sign_text = true,
       })
 
-      local cmp = require("cmp")
-      cmp.setup({
-        completion = {
-          autocomplete = false,
-        },
-      })
-
       local fidget = require("fidget")
       fidget.setup({})
 
@@ -71,12 +66,39 @@ return {
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
-        ensure_installed = {"lua_ls", "ts_ls", "rust_analyzer"},
+        ensure_installed = {"lua_ls", "rust_analyzer"},
         handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup({})
           end,
         },
+      })
+
+      local cmp = require("cmp")
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+      local cmp_action = require("lsp-zero").cmp_action()
+      cmp.setup({
+        completion = {
+          autocomplete = false,
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+          ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp_action.luasnip_supertab(),
+          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+        }, {
+          { name = "buffer" },
+        }),
       })
     end,
   },
