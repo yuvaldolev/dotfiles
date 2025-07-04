@@ -37,6 +37,7 @@ export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin/llvm-objdump:$PATH
 export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # Manpager.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -76,3 +77,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # Java.
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
+
+# opencode
+export PATH=/Users/yuvaldolev/.opencode/bin:$PATH
+
+# tmux-sessionizer.
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s '\en' "tmux-sessionizer -s 0\n"
+bindkey -s '\em' "tmux-sessionizer -s 1\n"
+bindkey -s '\e,' "tmux-sessionizer -s 2\n"
+bindkey -s '\e.' "tmux-sessionizer -s 3\n"

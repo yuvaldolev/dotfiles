@@ -115,9 +115,15 @@ vim.api.nvim_create_autocmd("Filetype", {
 vim.opt.laststatus = 2
 
 -- Enable spell checking.
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+-- vim.opt.spell = true
+-- vim.opt.spelllang = "en_us"
 
 -- Always show the sign column so that buffers with LSP diagnostics won't move
 -- the whole text on every insert.
 vim.opt.signcolumn = "yes"
+
+vim.filetype.add({
+  pattern = {
+    [".*/*.jai"] = "jai",
+  },
+})

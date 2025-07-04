@@ -302,8 +302,17 @@ bind c new-window -c "#{pane_current_path}"
 # Remove prefix timeout.
 set-option -g repeat-time 0
 
-# Scripts.
-bind-key -r f run-shell "tmux neww tmux-sessionizer"
+# Don't renumber windows.
+set -g renumber-windows off
+
+# tmux-sessionizer.
+bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
+bind-key -r M-n run-shell "tmux neww tmux-sessionizer -s 0"
+bind-key -r M-m run-shell "tmux neww tmux-sessionizer -s 1"
+bind-key -r M-, run-shell "tmux neww tmux-sessionizer -s 2"
+bind-key -r M-. run-shell "tmux neww tmux-sessionizer -s 3"
+
+# tmux-cht.
 bind-key -r i run-shell "tmux neww tmux-cht"
 
 # Personal configuration (not in source control).

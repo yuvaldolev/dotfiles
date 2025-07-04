@@ -5,6 +5,16 @@ return {
     cmd = { "TSUpdate", "TSUpdateSync" },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+
+      -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+      -- parser_config.jai = {
+      --   install_info = {
+      --     url = "https://github.com/SogoCZE/tree-sitter-jai.git",
+      --     files = {"src/parser.c"},
+      --     branch = "main",
+      --     requires_generate_from_grammar = false,
+      --   },
+      -- }
     end,
     event = { "BufNewFile", "BufReadPost" },
     opts = {
