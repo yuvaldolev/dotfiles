@@ -21,7 +21,7 @@ return {
 
           -- Always rebase.
           vim.keymap.set("n", "<leader>P", function()
-            vim.cmd.Git({'pull',  '--rebase'})
+            vim.cmd.Git('pull --rebase')
           end, opts)
 
           -- NOTE: This allows easily setting the branch that's pushed and any tracking

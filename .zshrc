@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+ZSH_THEME=""
 
 plugins=(bazel git kubectl zsh-autosuggestions)
 
@@ -17,6 +17,10 @@ prompt_context() {}
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+# Prompt.
+autoload -U promptinit; promptinit
+prompt pure
 
 # Aliases.
 alias cat=bat
@@ -83,7 +87,20 @@ export PATH=/Users/yuvaldolev/.opencode/bin:$PATH
 
 # tmux-sessionizer.
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s '\en' "tmux-sessionizer -s 0\n"
-bindkey -s '\em' "tmux-sessionizer -s 1\n"
-bindkey -s '\e,' "tmux-sessionizer -s 2\n"
-bindkey -s '\e.' "tmux-sessionizer -s 3\n"
+bindkey -s '\eh' "tmux-sessionizer -s 0\n"
+bindkey -s '\ej' "tmux-sessionizer -s 1\n"
+bindkey -s '\ek' "tmux-sessionizer -s 2\n"
+bindkey -s '\el' "tmux-sessionizer -s 3\n"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuvaldolev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuvaldolev/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuvaldolev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuvaldolev/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Added by Antigravity
+export PATH="/Users/yuvaldolev/.antigravity/antigravity/bin:$PATH"
+
+# Use neovim as the default editor.
+export EDITOR="nvim"
+export VISUAL="nvim"
