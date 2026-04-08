@@ -19,6 +19,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 # Prompt.
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -27,29 +28,8 @@ alias cat=bat
 alias neovide="/Applications/Neovide.app/Contents/MacOS/neovide --multigrid"
 alias ts="tmux-sessionizer"
 
-# Android.
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/25.2.9519653"
-
-# PATH.
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/apps/4coder:$PATH
-export PATH=$HOME/apps/chromedriver/chromedriver:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=/opt/homebrew/opt/llvm/bin/llvm-objdump:$PATH
-export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
 # Manpager.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # Rust.
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
@@ -58,32 +38,24 @@ export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Go configuration.
-export GOPATH="$HOME/go"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
 # Bat.
 export BAT_THEME="gruvbox-dark"
 
 # Atuin.
 eval "$(atuin init zsh)"
 
-# LLVM.
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
 # GitHub Copilot.
 eval "$(gh copilot alias -- zsh)"
 
 # Node version manager.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -z "${__YUVAL_NVM_LOADED:-}" ] && [ -s "$NVM_DIR/nvm.sh" ]; then
+  export __YUVAL_NVM_LOADED=1
+  . "$NVM_DIR/nvm.sh"
+fi
 
-# Java.
-export JAVA_HOME="/opt/homebrew/opt/openjdk"
-
-# opencode
-export PATH=/Users/yuvaldolev/.opencode/bin:$PATH
+if [ -s "$NVM_DIR/bash_completion" ]; then
+  . "$NVM_DIR/bash_completion"
+fi
 
 # tmux-sessionizer.
 bindkey -s ^f "tmux-sessionizer\n"
@@ -92,15 +64,12 @@ bindkey -s '\ej' "tmux-sessionizer -s 1\n"
 bindkey -s '\ek' "tmux-sessionizer -s 2\n"
 bindkey -s '\el' "tmux-sessionizer -s 3\n"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yuvaldolev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuvaldolev/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yuvaldolev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuvaldolev/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Added by Antigravity
-export PATH="/Users/yuvaldolev/.antigravity/antigravity/bin:$PATH"
 
 # Use neovim as the default editor.
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# bun completions
+[ -s "/Users/yuvaldolev/.bun/_bun" ] && source "/Users/yuvaldolev/.bun/_bun"
