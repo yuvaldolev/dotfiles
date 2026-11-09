@@ -45,9 +45,6 @@ export BAT_THEME="gruvbox-dark"
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 
-# GitHub Copilot.
-eval "$(gh copilot alias -- zsh)"
-
 # Node version manager.
 if [ -z "${__YUVAL_NVM_LOADED:-}" ] && [ -s "$NVM_DIR/nvm.sh" ]; then
   export __YUVAL_NVM_LOADED=1
