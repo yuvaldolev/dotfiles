@@ -42,6 +42,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.
 export BAT_THEME="gruvbox-dark"
 
 # Atuin.
+. "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 
 # GitHub Copilot.
